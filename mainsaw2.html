@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horror Hintergrund mit Swipe-Animation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <style>
+        /* Stellt das Hintergrundbild und das Layout ein */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background: black;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Swiper Container */
+        .swiper {
+            width: 100%;
+            height: 100vh; /* Höhe des Containers auf 100% der Viewport-Höhe setzen */
+        }
+
+        /* Swiper Slides */
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: contain; /* Das Bild vollständig sichtbar machen */
+            background-position: center center; /* Hintergrundbild zentrieren */
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Individuelle Slides mit verschiedenen Bildern */
+        .slide1 {
+            background-image: url('DALL·E 2024-12-22 20.11.45 - A terrifying and brutal depiction of Billy the Puppet from the Saw movie series, sitting on a tricycle in a dark and eerie room illuminated by a singl.webp');
+        }
+        .slide2 {
+            background-image: url('DALL·E 2024-12-22 20.12.00 - A terrifying and brutal depiction of Billy the Puppet from the Saw movie series, sitting on a tricycle in a dark and eerie room illuminated by a singl.webp');
+        }
+        .slide3 {
+            background-image: url('DALL·E 2024-12-22 20.12.10 - A brutal and eerie depiction of the iconic pig mask from the Saw movie series, placed in a dark and ominous setting. The mask is bloodstained and worn.webp');
+        }
+
+        /* Navigation Buttons */
+        .swiper-button-next, .swiper-button-prev {
+            color: white;
+        }
+
+        /* Pagination Dots */
+        .swiper-pagination-bullet {
+            background: white;
+        }
+
+        /* Button zentral positionieren und düsteren Stil anpassen */
+        .center-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px 40px;
+            font-size: 20px;
+            margin-left:20px;
+            color: #c9c9c9; /* Blasse Schrift */
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border: 2px solid #600000; /* Dunkelroter Rand */
+            background: linear-gradient(145deg, #330000, #000000); /* Dunkelrot-Schwarz-Verlauf */
+            border-radius: 30px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            z-index: 10; /* Überlagert Swiper */
+            box-shadow: 0 0 20px rgba(128, 0, 0, 0.5); /* Düstere Leuchteffekt */
+        }
+
+        .center-button:hover {
+            color: #fff; /* Helle Schrift beim Hover */
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8), 0 0 60px rgba(128, 0, 0, 0.5); /* Bedrohlicher roter Schimmer */
+            background: linear-gradient(145deg, #600000, #330000); /* Intensiverer Verlauf beim Hover */
+        }
+
+        .center-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 300%;
+            height: 100%;
+            background: rgba(255, 0, 0, 0.1); /* Subtiler roter Überlauf */
+            transform: skewX(-45deg);
+            transition: 0.7s;
+        }
+
+        .center-button:hover::before {
+            left: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Swiper Container -->
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide slide1"></div>
+            <div class="swiper-slide slide2"></div>
+            <div class="swiper-slide slide3"></div>
+        </div>
+        <!-- Navigation Buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Zentraler Button -->
+    <a href="moviesaw5.html" class="center-button">ALL SAW TRAPS</a>
+
+    <!-- Hintergrundmusik -->
+    <audio id="background-music" loop autoplay>
+        <source src="69546__timtube__evil-laughing-timtube.mp3" type="audio/mp3">
+        Ihr Browser unterstützt keine Audio-Wiedergabe.
+    </audio>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Swiper Initialisierung
+        const swiper = new Swiper('.swiper', {
+            loop: true, // Endloses Swipen
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true, // Klickbare Pagination
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 3000, // Automatisches Wechseln alle 3 Sekunden
+                disableOnInteraction: false, // Autoplay bleibt nach Interaktion aktiv
+            },
+            effect: 'fade', // Optional: Übergangseffekt ändern (z.B. "slide" oder "fade")
+            speed: 1000, // Geschwindigkeit des Übergangs (in ms)
+        });
+    </script>
+</body>
+</html>
+

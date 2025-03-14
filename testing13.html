@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persistent Dropdown Navigation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav .menu {
+            display: flex;
+            gap: 25px; /* Erhöhter Abstand zwischen den Buttons */
+            position: relative;
+        }
+
+        nav .menu .dropdown-container {
+            position: relative;
+        }
+
+        /* Button Styling */
+        nav .menu button {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 14px 18px; /* Größere Polsterung */
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.9rem; /* Kleinere Schriftgröße */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            width: 65px; /* Fixe Breite */
+            height: 65px; /* Fixe Höhe */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav .menu button:hover {
+            background-color: white;
+            color: black;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5); /* Verstärkter Glüheffekt */
+        }
+
+        /* Dropdown Menu */
+        nav .menu .dropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 10px 0;
+            min-width: 120px;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0s 0.3s;
+        }
+
+        nav .menu .dropdown a {
+            display: block;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        nav .menu .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Keep dropdown visible when hovering the button or the dropdown itself */
+        nav .menu .dropdown-container:hover .dropdown,
+        nav .menu .dropdown-container:hover button {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s ease, visibility 0s 0s;
+        }
+
+        /* Container */
+        .container {
+            display: flex;
+            flex: 1;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Box Styling */
+        .box {
+            flex: 1;
+            transition: flex 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .box-1 {
+            background: transparent;
+        }
+
+        .box-2 {
+            background: transparent;
+        }
+
+        .box-1 img {
+            filter: brightness(0.8);
+        }
+
+        .box-2 img {
+            filter: brightness(0.8);
+        }
+
+        .box:hover {
+            flex: 1.1;
+        }
+
+        .box:not(:hover) {
+            flex: 0.9;
+        }
+
+        .box:hover img {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+
+        /* Styling for text inside the left image */
+        .box-1 .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        /* Styling for text inside the right image */
+        .box-2 .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        /* Make the text look like a button */
+        .box .text {
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Subtle hover effect for the text buttons */
+        .box .text:hover {
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">Gemeindebau Abi GmbH</div>
+        <div class="menu">
+            <!-- Kontakt Button with Dropdown -->
+            <div class="dropdown-container">
+                <button>Kontakt</button>
+                <div class="dropdown">
+                    <a href="#home-1">Sub Home 1</a>
+                    <a href="#home-2">Sub Home 2</a>
+                    <a href="#home-3">Sub Home 3</a>
+                </div>
+            </div>
+
+            <!-- Mieter Button with Dropdown -->
+            <div class="dropdown-container">
+                <button>Mieter</button>
+                <div class="dropdown">
+                    <a href="#about-1">Sub About 1</a>
+                    <a href="#about-2">Sub About 2</a>
+                    <a href="#about-3">Sub About 3</a>
+                </div>
+            </div>
+
+            <!-- Vermieter Button with Dropdown -->
+            <div class="dropdown-container">
+                <button>Vermieter</button>
+                <div class="dropdown">
+                    <a href="#contact-1">Sub Contact 1</a>
+                    <a href="#contact-2">Sub Contact 2</a>
+                    <a href="#contact-3">Sub Contact 3</a>
+                </div>
+            </div>
+
+            <!-- Hilfe Button with Dropdown -->
+            <div class="dropdown-container">
+                <button>Hilfe</button>
+                <div class="dropdown">
+                    <a href="#contact-1">Sub Contact 1</a>
+                    <a href="#contact-2">Sub Contact 2</a>
+                    <a href="#contact-3">Sub Contact 3</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Image Container -->
+    <div class="container">
+        <div class="box box-1">
+            <img src="pexels-josh-hild-1270765-2422253.jpg" alt="Box 1">
+            <a href="altbau/altbau.html" class="text">Altbau</a>
+        </div>
+        <div class="box box-2">
+            <img src="pexels-sandin-redzo-1780184288-29860174.jpg" alt="Box 2">
+            <a href="page2.html" class="text">Neubau</a>
+        </div>
+    </div>
+</body>
+</html>

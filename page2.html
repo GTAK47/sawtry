@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spielanleitung</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    button {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #2563eb;
+    }
+    .image-container {
+      text-align: center;
+      margin-top: 2rem;
+      display: none;
+    }
+    .image-container img {
+      max-width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome Lizzard</h1>
+    <p>
+      I want to a play a game 
+    </p>
+    <p>
+      Just because we are a few kilometers away from each other, does not mean that we cannot have fun anymore (huge LOL).
+      As you know, I am freaking Nerd, just a regualar Tech Guy who has some ideas, creating Apps and Programms that make me rich one day (hopefully) but that is some future shit, lets stay in the current moment.
+    </p>
+    <p>
+    Let me introduce you to the game, this is all about math, codes, insiders and memories. You are a smart girl, Im sure you will be able to solve my enigma (if you try hard enough)
+    </p>
+    <p>
+      If you feel ready, then click this button to enter the next level 
+    </p>
+    <button onclick="showImage()">Hinweis anzeigen</button>
+
+    <div class="image-container" id="imageContainer">
+      <img src="dein-bild.jpg" alt="Hinweisbild" />
+    </div>
+  </div>
+
+  <script>
+    function showImage() {
+      document.getElementById('imageContainer').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

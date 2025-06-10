@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geheimer Zugang</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #111827, #1f2937);
+      color: #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .card {
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 1.75rem;
+    }
+    input {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 0.5rem;
+      width: 100%;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background: #3b82f6;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    .error {
+      color: #f87171;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🔒 Geheimer Bereich</h1>
+    <p>Gib den Zugangscode ein, um fortzufahren:</p>
+    <input type="text" id="codeInput" placeholder="Zugangscode" />
+    <button onclick="checkCode()">Weiter</button>
+    <p id="errorMsg" class="error"></p>
+  </div>
+
+  <script>
+    const correctCode = "1234"; // <-- Hier den gültigen Code anpassen
+
+    function checkCode() {
+      const input = document.getElementById("codeInput").value;
+      const errorMsg = document.getElementById("errorMsg");
+      if (input === correctCode) {
+        window.location.href = "https://example.com"; // Weiterleitung bei Erfolg
+      } else {
+        errorMsg.textContent = "Falscher Code. Versuch es erneut.";
+      }
+    }
+  </script>
+</body>
+</html>

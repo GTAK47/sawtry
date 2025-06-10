@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nächste Seite</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 2rem;
+    }
+    button {
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Congratulations!</h1>
+    <p>
+      Now you know how it works, sometimes things are "boring" at the beginning, am I right? 
+    </p>
+    <p>
+      Hopefully your memories about that night are not gone. Maybe I can help you out. After the gaming session we went to WU, the time there was not to bad I would say. We did our favorite activities, sing, dance and being cringe. 
+    </p>
+
+    <p>
+        Now it is your turn : I dropped a french song for you, not just one but there was one which I was able to perform somehow haha.
+    </p>
+    
+    <p>
+        Enter the Birthday from the artist, who made that song.
+    </p>
+
+
+    <button onclick="goToNextLevel()">Weiter</button>
+  </div>
+
+  <script>
+    function goToNextLevel() {
+      window.location.href = "weiteres-level.html"; // Zielseite anpassen
+    }
+  </script>
+</body>
+</html>

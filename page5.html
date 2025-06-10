@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geheimcode-Seite</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 2rem;
+    }
+    input[type="number"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #94a3b8;
+      width: 80%;
+      max-width: 300px;
+      margin-bottom: 1.5rem;
+    }
+    button {
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #2563eb;
+    }
+    .error {
+      color: #f87171;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Congratulations!</h1>
+    <p>
+      Some colleagues were funnier than others, some colleagues we more chill than others, some collaugues were dressed better than others.
+    </p>
+
+    <p>
+      You were in shock, seeing this person wearing a t-shirt, who was it ?
+    </p>
+
+    <p>
+      Take the number of my district and subtract the amount of letters the person has in the first name.
+    </p>
+
+    <p>
+      After you have got your solution, use the magazin from the mistery box. Go on that page.
+    </p>
+
+    <p>
+      You will see some yellow quadratic boxes, filled with integer numbers. Add all those numbers together and that is the solution of this level.
+    </p>
+
+    <input type="number" id="numberInput" placeholder="Enter the sum">
+    <br>
+    <button onclick="checkNumber()">Continue</button>
+    <div class="error" id="errorMessage"></div>
+  </div>
+
+  <script>
+    function checkNumber() {
+      const correctNumber = "1014"; // Beispiel-Zahl
+      const userInput = document.getElementById("numberInput").value.trim();
+      const errorDiv = document.getElementById("errorMessage");
+
+      if (userInput === correctNumber) {
+        window.location.href = "naechste-seite.html"; // Zielseite anpassen
+      } else {
+        errorDiv.textContent = "Wrong number, come on Enigma Girl try again!";
+      }
+    }
+  </script>
+</body>
+</html>

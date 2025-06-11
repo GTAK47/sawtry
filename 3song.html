@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nächste Seite</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 2rem;
+    }
+    input[type="text"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #94a3b8;
+      width: 80%;
+      max-width: 300px;
+      margin-bottom: 1.5rem;
+    }
+    button {
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #2563eb;
+    }
+    .error {
+      color: #f87171;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>The real start of my music career</h1>
+    <p>
+      Now you know how it works, sometimes things are "boring" at the beginning, am I right?
+    </p>
+    <p>
+      Hopefully your memories about that night are not gone. Maybe I can help you out. After the gaming session we went to WU, the time there was not too bad I would say. We did our favorite activities: sing, dance and being cringe.
+    </p>
+    <p>
+      Now it is your turn: I dropped a french song for you and started singing (cringe^9000). Eyes do not lie, I could see that you liked it somehow LOL.
+    </p>
+    <p>
+      Enter the birthday of the artist who made that song.
+    </p>
+
+    <input type="text" id="codeInput" placeholder="TT.MM.JJJJ">
+    <br>
+    <button onclick="checkCode()">Next Level</button>
+    <div class="error" id="errorMessage"></div>
+  </div>
+
+  <script>
+    function checkCode() {
+      const correctCode = "06.05.1986"; // Beispiel-Datum
+      const userInput = document.getElementById("codeInput").value.trim();
+      const errorDiv = document.getElementById("errorMessage");
+
+      if (userInput === correctCode) {
+        window.location.href = "4uselessmagazine.html"; // Zielseite anpassen
+      } else {
+        errorDiv.textContent = "Wrong artist, try another one";
+      }
+    }
+  </script>
+</body>
+</html>

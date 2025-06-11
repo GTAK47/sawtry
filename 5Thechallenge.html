@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Geheimcode-Seite</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      line-height: 1.6;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 700px;
+      width: 100%;
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    p {
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    input[type="number"] {
+      padding: 0.6rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #94a3b8;
+      width: 100%;
+      max-width: 300px;
+      background-color: #0f172a;
+      color: #e2e8f0;
+    }
+
+    button {
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    .error {
+      color: #f87171;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>The "challenge"</h1>
+    <p>
+      Look at that, isn’t that beautiful? Do you know what’s so great about it? I'm sure you've seen the solution already… quite a few times, to be honest. But now is your time to prove yourself. Here’s the deal: Of course you can use ChatGPT, no big deal — but be aware: “The easy path is not always the most rewarding one.” If you use chat — fine — but you might regret it.
+    </p>
+
+    <img src="gleichung.png" alt="Gleichung als Bild">
+
+    <div class="input-group">
+      <input type="number" id="numberInput" placeholder="Zahl eingeben" />
+      <button onclick="checkNumber()">Weiter</button>
+      <div class="error" id="errorMessage"></div>
+    </div>
+  </div>
+
+  <script>
+    function checkNumber() {
+      const correctNumber = "2072";
+      const userInput = document.getElementById("numberInput").value.trim();
+      const errorDiv = document.getElementById("errorMessage");
+
+      if (userInput === correctNumber) {
+        errorDiv.textContent = "";
+
+        Swal.fire({
+          title: 'LOOOL ... I knew it all the time',
+          text: 'If you wanna know how I did it, send me a picture showing your calculation. Otherwise, this secret stays mine 4ever',
+          icon: 'success',
+          confirmButtonText: 'Next Level',
+          background: '#1e293b',
+          color: '#e2e8f0',
+          confirmButtonColor: '#3b82f6'
+        }).then(() => {
+          window.location.href = "6Trickyquestion.html"; // Zielseite ggf. anpassen
+        });
+
+      } else {
+        errorDiv.textContent = "Wrong number, come on try again";
+      }
+    }
+  </script>
+</body>
+</html>

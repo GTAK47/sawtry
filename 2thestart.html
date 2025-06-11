@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zugangscode eingeben</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 2rem;
+    }
+    input[type="text"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      width: 200px;
+      text-align: center;
+    }
+    button {
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin: 0.5rem;
+    }
+    button:hover {
+      background-color: #2563eb;
+    }
+    .error {
+      color: #f87171;
+      margin-top: 1rem;
+    }
+    .image-container {
+      margin-top: 2rem;
+      display: none;
+    }
+    .image-container img {
+      max-width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>"The Start"</h1>
+    <p>Click on "Show Picture", remember the date, put it in the box and click "Submit" to continue (look how cute you are, hitting the double LOL) </p>
+    <input type="text" id="codeInput" placeholder="TT.MM.JJJJ" />
+    <br>
+    <button onclick="checkCode()">Submit</button>
+    <button onclick="showImage()">Show Picture</button>
+    <div class="error" id="errorMessage"></div>
+    <div class="image-container" id="imageContainer">
+      <img src="Gamenight.jpg" alt="Hinweisbild" />
+    </div>
+  </div>
+
+  <script>
+    function checkCode() {
+      const input = document.getElementById('codeInput').value.trim();
+      const correctCode = "19.01.2025"; // Hier das richtige Datum eintragen
+
+      if (input === correctCode) {
+        window.location.href = "3song.html"; // Zielseite anpassen
+      } else {
+        document.getElementById('errorMessage').textContent = "Wrong date, try again";
+      }
+    }
+
+    function showImage() {
+      document.getElementById('imageContainer').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

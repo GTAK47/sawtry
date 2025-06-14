@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Information</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #3b82f6, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      max-width: 700px;
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      margin-bottom: 2rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+      margin-bottom: 2rem;
+    }
+
+    .footer {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .next-button {
+      padding: 0.9rem 2rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 2rem;
+      background: linear-gradient(to right, #3b82f6, #06b6d4);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .next-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 30px rgba(6, 182, 212, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Quick Message</h1>
+  <p>
+    Since I am running out of time, I took a shortcut, you do not need any key or something like that. Translate the message and take it serious .... like your tasks at Andros.
+  </p>
+
+  <img src="billy.png" alt="Illustration oder Screenshot" />
+</div>
+
+
+<div class="container">
+  
+  <p>
+    I am sorry for being so weird but I am not sorry for being myself, see me as an artist, working in diffrent fields. What a pitty that you are not watching TV anymore, maybe you will see my face there one day (if you recognize it of course)
+  </p>
+
+<div class="footer">
+  <button class="next-button" onclick="goNext()">➡️ Continue</button>
+</div>
+
+<script>
+  function goNext() {
+    // Weiterleitungsziel anpassen
+    window.location.href = "8ende.html";
+  }
+</script>
+
+</body>
+</html>

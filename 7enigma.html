@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Enigma</title>
+  <title>Information</title>
   <style>
     body {
       margin: 0;
@@ -48,6 +48,23 @@
       margin-bottom: 2rem;
     }
 
+    input[type="password"] {
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 1rem;
+      border: none;
+      outline: none;
+      margin-bottom: 1rem;
+      width: 250px;
+      text-align: center;
+    }
+
+    .error {
+      color: #f87171;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
     .footer {
       padding: 1.5rem;
       text-align: center;
@@ -75,30 +92,35 @@
 
 <div class="container">
   <h1>Quick Message</h1>
-  <p>
-    Since I am running out of time, I took a shortcut, you do not need any key or something like that. Translate the message and take it serious .... I mean it.
-  </p>
-
-  <img src="billy.png" alt="Illustration oder Screenshot" />
+  <p>This picture is symbolic, guess who that is and how this person feels.</p>
+  <img src="code.png" alt="Illustration oder Screenshot" />
 </div>
 
-
 <div class="container">
-  
-  <p>
-    I am sorry for being so weird but I am not sorry for being myself, see me as an artist, working in diffrent fields. What a pitty that you are not watching TV anymore, maybe you will see my face there one day (if you recognize it of course)
+  <p>You need to enter a password, it is written on the page this totally unknown person is holding in his hands. If you have no clue how to decipher it, go back in the game and start searching for a key. (Words, said out of fun, can have a deeper meaning sometimes)
   </p>
 
-<div class="footer">
-  <button class="next-button" onclick="goNext()">➡️ Continue</button>
+  <input type="password" id="password" placeholder="Enter password" />
+  <div class="error" id="error">Enter the correct password</div>
+
+  <div class="footer">
+    <button class="next-button" onclick="goNext()">➡️ Continue</button>
+  </div>
 </div>
 
 <script>
   function goNext() {
-    // Weiterleitungsziel anpassen
-    window.location.href = "8ende.html";
+    const password = document.getElementById('password').value;
+    const errorDiv = document.getElementById('error');
+
+    if (password === "TROLILOL" || "trolilol" || "Trolilol") {
+      window.location.href = "8ende.html";
+    } else {
+      errorDiv.style.display = "block";
+    }
   }
 </script>
 
 </body>
 </html>
+

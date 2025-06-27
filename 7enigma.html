@@ -113,7 +113,9 @@
     const password = document.getElementById('password').value;
     const errorDiv = document.getElementById('error');
 
-    if (password === "TROLILOL" || "trolilol" || "Trolilol") {
+    if (password === "TROLILOL" ||
+      password === "trolilol" ||
+      password === "Trolilol") {
       window.location.href = "8ende.html";
     } else {
       errorDiv.style.display = "block";

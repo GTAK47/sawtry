@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spot X7Y3Z9</title>
+
+  <!-- Swiper.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #000;
+      color: #00ff88;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #00ff88;
+    }
+
+    p.description {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      color: #00ff88;
+      opacity: 0.8;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    .swiper {
+      width: 100%;
+      max-width: 700px;
+      aspect-ratio: 16 / 9;
+      margin: 1rem auto;
+      border: 2px solid #00ff88;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #111;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    #map {
+      height: 300px;
+      width: 100%;
+      max-width: 700px;
+      margin: 2rem auto;
+      border: 2px solid #00ff88;
+      border-radius: 12px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      background-color: #00ff88;
+      color: #000;
+      font-family: 'Share Tech Mono', monospace;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 15px #00ff88;
+    }
+
+    button:hover {
+      background-color: #00ffaa;
+      box-shadow: 0 0 25px #00ffaa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📍 Smoke Pick Up Spot 📤</h1>
+  <p class="description">➪ Swipe to get more information </p>
+
+  <!-- Swiper Container -->
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="WhatsApp Image 2025-07-27 at 21.47.58.JPG" alt="Spot 1"></div>
+      <div class="swiper-slide"><img src="image.png" alt="Spot 2"></div>
+      <div class="swiper-slide"><img src="WhatsApp Image 2025-07-27 at 21.47.59 (2).JPG" alt="Spot 3"></div>
+      <div class="swiper-slide"><img src="WhatsApp Image 2025-07-27 at 21.48.00.jpeg" alt="Spot 4"></div>
+      <div class="swiper-slide"><img src="WhatsApp Image 2025-07-27 at 21.48.00 (1).jpeg" alt="Spot 5"></div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div id="map"></div>
+
+  <!-- Button -->
+  <div class="button-container">
+    <button onclick="showPopup()">📦 Smoke Secured 📦</button>
+  </div>
+
+  <!-- Swiper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <!-- Leaflet.js -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    // Swiper Setup
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 1,
+      spaceBetween: 10,
+    });
+
+    // Leaflet Map Setup
+    const map = L.map('map').setView([49.47458065450347, 17.129337557371954], 16);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap',
+    }).addTo(map);
+
+    L.marker([49.47458065450347, 17.129337557371954]).addTo(map)
+      .bindPopup('<b>Locate your smoke</b><br>📍 Očni Optika, Prostějov')
+      .openPopup();
+
+    // SweetAlert2 Popup
+    function showPopup() {
+      Swal.fire({
+        title: '💲 Mission Done 💲!',
+        html: `<p>Good job, G.</p>
+               <p>Smoke that shit up!</p>
+               <p>Payment: (10€)</p>`,
+        icon: 'success',
+        background: '#111',
+        color: '#00ff88',
+        confirmButtonColor: '#00ff88',
+        customClass: {
+          popup: 'animated fadeInDown'
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

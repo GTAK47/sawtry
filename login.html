@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zugangskontrolle</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Share Tech Mono', monospace;
+      background-color: #000;
+      color: #00ff88;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0,255,136,0.03),
+        rgba(0,255,136,0.03) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      animation: flicker 2s infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.03; }
+    }
+
+    .login-box {
+      position: relative;
+      z-index: 1;
+      max-width: 500px;
+      margin: 120px auto;
+      background: #0a0a0a;
+      padding: 2rem;
+      border: 2px solid #00ff88;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+      animation: pulse 3s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { box-shadow: 0 0 10px rgba(0,255,136,0.4); }
+      to   { box-shadow: 0 0 25px rgba(0,255,136,0.8); }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #00ff88;
+      color: #00ff88;
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+
+    input:focus {
+      outline: none;
+      border-bottom-color: #00ffaa;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.7rem;
+      background: #000;
+      color: #00ff88;
+      border: 2px solid #00ff88;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00ff88;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-box">
+  <h1>☣    ╭∩╮(•̀_·́)╭∩╮    ☣</h1>
+
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" id="username" placeholder="username" autocomplete="off">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="********">
+  </div>
+
+  <button onclick="checkLogin()">>>> Verify Access</button>
+</div>
+
+<script>
+  const validPassword = "X8_Clash.Is.Trash_8X";
+
+  function checkLogin() {
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if (!username || !password) {
+      Swal.fire({
+        title: '⚠️ Error',
+        text: 'Enter correct username and password',
+        icon: 'warning',
+        background: '#111',
+        color: '#ffcc00',
+        confirmButtonColor: '#00ff88'
+      });
+      return;
+    }
+
+    if (password === validPassword) {
+      localStorage.setItem("username", username);
+      Swal.fire({
+        title: '✅ Access verified',
+        text: `Waz poppin, ${username}.`,
+        icon: 'success',
+        background: '#111',
+        color: '#00ff88',
+        confirmButtonColor: '#00ff88'
+      }).then(() => {
+        window.location.href = "test11.html";
+      });
+    } else {
+      Swal.fire({
+        title: '🚫 Access denied',
+        text: 'Wrong Password.',
+        icon: 'error',
+        background: '#111',
+        color: '#ff4444',
+        confirmButtonColor: '#ff4444'
+      });
+    }
+  }
+</script>
+
+</body>
+</html>
